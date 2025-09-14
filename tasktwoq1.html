@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+.maincontainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* background-color: rgb(211, 56, 56); */
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+    
+}
+.con{
+    width: 40rem;
+    display: flex;
+    padding: 2rem;
+    background-color: rgb(201, 239, 239);
+    border-radius: 1rem;
+    box-shadow: 0 2px 6px rgb(81, 80, 80);
+}
+
+   .con h4 {
+  background-color: red;
+}
+.con p{
+    text-align: center;
+   background-color: orange;
+}
+
+
+button{
+    width: fit-content;
+    height: fit-content;
+    border: none;
+    background-color: antiquewhite;
+    border-radius: 12%;
+    padding: 0.3rem;
+}
+
+
+    </style>
+</head>
+<body>
+    <script>
+
+let div=document.createElement("div");
+div.className="maincontainer"
+let products = [
+ 	{ id: 201, name: "Smartphone", price: 699, category: "Electronics", stock: 50, rating: 4.6 },
+ 	{ id: 202, name: "Blender", price: 49, category: "Appliances", stock: 20, rating: 4.3 },
+ 	{ id: 203, name: "Yoga Mat", price: 25, category: "Fitness", stock: 100, rating: 4.9 },
+ 	{ id: 204, name: "Office Desk", price: 299, category: "Furniture", stock: 10, rating: 4.2 },
+ 	{ id: 205, name: "Bluetooth Speaker", price: 79, category: "Electronics", stock: 60, rating: 4.7 }
+ ];
+
+ products.forEach(data=>{
+    let con=document.createElement("div")
+    con.className="con";
+    con.innerHTML=`<h4>id :</h4><p>${data.id}</p> <h4>name :</h4><p>${data.name}</p> <h4>price :</h4><p>${data.price}</p> <h4> category :</h4><p>${data. category}</p> <h4> stock :</h4><p>${data. stock}</p><h4> rating :</h4><p>${data. rating}</p>`
+    let button=document.createElement("button")
+    button.innerText="BuyNow"
+    con.append(button)
+   div.append(con)
+ })
+ document.body.appendChild(div)
+
+
+    </script>
+</body>
+</html>

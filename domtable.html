@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    table,
+    th,
+    td,
+    tr {
+        border: 2px solid;
+        border-collapse: collapse;
+        padding: 1rem;
+         table-layout: fixed;
+         font-size: 3rem;
+    }
+    img{
+        height: 70%;
+        width: 70%;
+    }
+    table{
+         width: 100%;
+  
+    }
+    
+</style>
+
+<body>
+    <script>
+        async function fetching() {
+            let res = await fetch("http://localhost:3000/products")
+            let data = await res.json()
+            funData(data)
+        }
+        fetching()
+
+        function funData(data) {
+            let heading = ["id", "title", "price", "description", "category", "image"]
+            let table = document.createElement("table")
+            let tr = document.createElement("tr")
+            heading.forEach(heads => {
+                let th = document.createElement("th")
+                th.innerText = heads
+                tr.append(th)
+            })
+            table.append(tr)
+            data.forEach(obj => {
+                let tr = document.createElement("tr")
+                for (let key in obj) {
+                    if (key != "rating") {
+                         let td = document.createElement("td")
+                        if (key == "image") {
+                            let img = document.createElement("img")
+                            img.src = obj[key]
+                            td.append(img)
+                            tr.append(td)
+                        } else {
+                           
+                            td.innerText = obj[key]
+                            tr.append(td)
+                        }
+                    }
+                    table.append(tr)
+
+                }
+
+            })
+
+
+
+
+
+
+
+
+
+            // table.append(tr)
+            document.body.append(table)
+
+
+
+        }
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); /* mobile default */
+  gap: 20px;
+  padding: 20px;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  background: #fff;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h3 {
+  margin: 10px 0;
+  font-size: 1.2rem;
+}
+
+.card p {
+  margin: 5px 0;
+  color: #555;
+}
+
+/* Tablet (≥768px) → 2 columns */
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop (≥1024px) → 3 columns */
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+    </style>
+</head>
+<body>
+    <div id="product-grid" class="grid"></div>
+
+    <script>
+
+        let products = [
+  { id: 701, name: "Action Camera", price: 299, category: "Electronics", stock: 20, rating: 4.8 },
+  { id: 702, name: "Toaster", price: 29, category: "Appliances", stock: 40, rating: 4.2 },
+  { id: 703, name: "Tennis Racket", price: 129, category: "Sports", stock: 60, rating: 4.5 },
+  { id: 704, name: "Dining Table", price: 799, category: "Furniture", stock: 5, rating: 4.6 },
+  { id: 705, name: "VR Headset", price: 599, category: "Electronics", stock: 15, rating: 4.9 }
+];
+
+let grid = document.getElementById("product-grid");
+
+products.forEach(p => {
+  let card = document.createElement("div");
+  card.className = "card";
+  card.innerHTML = `
+    <h3>${p.name}</h3>
+    <p>💲 Price: $${p.price}</p>
+    <p>⭐ Rating: ${p.rating}</p>
+  `;
+  grid.appendChild(card);
+});
+
+    </script>
+</body>
+</html>
